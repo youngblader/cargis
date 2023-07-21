@@ -15,6 +15,7 @@ export const colors = {
   lightGray: '#F7F7F7',
   green: '#27C07D',
   lightGreen: '#E9F9F2',
+  white: '#FFFFFF',
 };
 
 export const hitClop = {
