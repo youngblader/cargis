@@ -1,23 +1,25 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import MainStack from './Main';
 
-const RootStackNav = createStackNavigator();
+import MainStack from './MainStack';
+import {RootStackNavigation} from './types';
+
+const RootStackNavigator = createStackNavigator<RootStackNavigation>();
 
 const RootStack = () => {
   return (
-    <RootStackNav.Navigator
+    <RootStackNavigator.Navigator
       screenOptions={{
         headerShown: false,
       }}>
-      <RootStackNav.Screen
+      <RootStackNavigator.Screen
         name="Main"
         options={{
           headerShown: false,
         }}
         component={MainStack}
       />
-    </RootStackNav.Navigator>
+    </RootStackNavigator.Navigator>
   );
 };
 

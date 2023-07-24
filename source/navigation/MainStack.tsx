@@ -1,34 +1,40 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
+
 import {Orders, DetailOrder} from '../screens';
+
+import {MainStackNavigation} from './types';
 import {colors} from '../styles';
 
-const MainStackNav = createStackNavigator();
+const MainStackNavigator = createStackNavigator<MainStackNavigation>();
 
 const MainStack = () => {
   return (
-    <MainStackNav.Navigator
+    <MainStackNavigator.Navigator
       initialRouteName="Orders"
       screenOptions={{
         cardStyle: {
           backgroundColor: colors.white,
         },
       }}>
-      <MainStackNav.Screen
+      <MainStackNavigator.Screen
         name="Orders"
         options={{
           headerShown: false,
         }}
         component={Orders}
       />
-      <MainStackNav.Screen
+      <MainStackNavigator.Screen
         name="DetailOrder"
         options={{
           headerShown: false,
+          cardStyle: {
+            backgroundColor: colors.white,
+          },
         }}
         component={DetailOrder}
       />
-    </MainStackNav.Navigator>
+    </MainStackNavigator.Navigator>
   );
 };
 
