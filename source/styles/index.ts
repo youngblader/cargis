@@ -16,9 +16,11 @@ export const colors = {
   green: '#27C07D',
   lightGreen: '#E9F9F2',
   white: '#FFFFFF',
+  statusGray: '#EDF1F2',
+  shadowColor: '#232B2F',
 };
 
-export const hitClop = {
+export const hitSlop = {
   top: 12,
   bottom: 12,
   left: 12,
