@@ -1,1 +1,3 @@
-export interface DetailOrderProps {}
+import {DetailOrderNavigationProps} from '../../navigation/types';
+
+export interface DetailOrderProps extends DetailOrderNavigationProps {}

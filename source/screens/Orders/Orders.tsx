@@ -1,20 +1,27 @@
 import React, {FC} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View} from 'react-native';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
+import OrdersList from './components/OrdersList/OrdersList';
+import {HeaderOrdersList} from './components';
+
+import {Order} from '../../types/Order';
+import {styles} from './Orders.styles';
 import {OrdersProps} from './types';
 
-const Orders: FC<OrdersProps> = () => {
+const OrdersView: FC<OrdersProps> = ({navigation}) => {
+  const presentDetailOrder = (item: Order) => {
+    navigation.navigate('DetailOrder', {id: item.id});
+  };
+
   return (
-    <View style={styles.container}>
-      <Text>OrdersScreen</Text>
-    </View>
+    <SafeAreaView style={styles.safe}>
+      <View style={styles.container}>
+        <HeaderOrdersList />
+        <OrdersList onCardTapped={presentDetailOrder} />
+      </View>
+    </SafeAreaView>
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
-
-export default Orders;
+export default OrdersView;
