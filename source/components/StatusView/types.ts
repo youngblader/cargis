@@ -1,5 +1,5 @@
 export interface StatusViewProps {
-  status?: string;
+  status: string;
 }
 
 export interface StatusStyle {
@@ -9,7 +9,7 @@ export interface StatusStyle {
 }
 
 export enum Status {
-  active,
-  completed,
-  on_pause,
+  active = 'active',
+  completed = 'completed',
+  on_pause = 'on_pause',
 }

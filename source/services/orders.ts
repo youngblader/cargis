@@ -1,6 +1,6 @@
 import axios from 'axios';
-import {OrderResponse} from '../types/Order';
-import {DetailOrder} from '../types/DetailOrder';
+import { OrderResponse } from '../types/Order';
+import { DetailOrder } from '../types/DetailOrder';
 
 const token = 'dZhzHlw8Flpsf8W9Duq4rsJ1UVT4dRlW';
 

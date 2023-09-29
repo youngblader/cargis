@@ -1,5 +1,5 @@
-import {StyleSheet} from 'react-native';
-import {colors} from '../../styles';
+import { StyleSheet } from 'react-native';
+import { colors } from '../../styles';
 
 export const styles = StyleSheet.create({
   safe: {
@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
   button: {
     justifyContent: 'center',
     alignItems: 'center',
-    minWidth: 152, // ??
+    minWidth: 152,
     paddingVertical: 6,
     paddingHorizontal: 16,
     borderRadius: 50,

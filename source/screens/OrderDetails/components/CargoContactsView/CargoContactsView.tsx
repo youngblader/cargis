@@ -1,17 +1,16 @@
-import React, {FC} from 'react';
-import {View, Text} from 'react-native';
+import React, { FC } from 'react';
+import { View, Text } from 'react-native';
 import FastImage from 'react-native-fast-image';
 
-import {CustomerView, DetailView} from '../../../../components';
+import { CustomerView, DetailView } from '../../../../components';
 
-import {CargoContactsProps} from './types';
-import {phoneMasked} from '../../../../utils/validator';
-import {styles} from './CargoContactsView.styles';
+import { CargoContactsProps } from './types';
+import { phoneMasked } from '../../../../utils/validator';
+import { styles } from './CargoContactsView.styles';
+import { IMAGES } from '../../../../utils/constants';
 
-const phoneIcon = require('../../../../../assets/phone.png');
-
-const CargoContactsView: FC<CargoContactsProps> = ({title, contact}) => {
-  const {companyName, innCompany, spokesperson} = contact;
+const CargoContactsView: FC<CargoContactsProps> = ({ title, contact }) => {
+  const { companyName, innCompany, spokesperson } = contact;
 
   const phone = spokesperson.phone ?? '';
 
@@ -38,7 +37,7 @@ const CargoContactsView: FC<CargoContactsProps> = ({title, contact}) => {
                 <View style={styles.contactsContainer}>
                   <Text style={styles.cardText}>{spokesperson?.name}</Text>
                   <FastImage
-                    source={phoneIcon}
+                    source={IMAGES.phoneIcon}
                     style={styles.phoneIcon}
                     resizeMode={'cover'}
                   />

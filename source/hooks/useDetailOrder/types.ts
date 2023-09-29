@@ -1,4 +1,4 @@
-import {DetailOrder} from '../../types/DetailOrder';
+import { DetailOrder } from '../../types/DetailOrder';
 
 export interface useDetailOrderResponse {
   order: DetailOrder | null;

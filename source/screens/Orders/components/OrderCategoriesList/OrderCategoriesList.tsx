@@ -1,15 +1,11 @@
-import React, {FC, useState} from 'react';
-import {View, FlatList} from 'react-native';
+import React, { FC, useState } from 'react';
+import { View, FlatList } from 'react-native';
 
 import CategoryCard from '../CategoryCard/CategoryCard';
 
-import {categories} from '../../../../config';
-import {OrderCategoriesListProps} from './types';
-import {styles} from './OrderCategoriesList.styles';
-
-const renderSeparator = () => {
-  return <View style={styles.separator} />;
-};
+import { categories } from '../../../../utils/constants';
+import { OrderCategoriesListProps } from './types';
+import { styles } from './OrderCategoriesList.styles';
 
 const OrderCategoriesList: FC<OrderCategoriesListProps> = () => {
   const [activeItem, setActiveItem] = useState(0);
@@ -23,7 +19,7 @@ const OrderCategoriesList: FC<OrderCategoriesListProps> = () => {
       data={categories}
       ItemSeparatorComponent={renderSeparator}
       contentContainerStyle={styles.flatlistInsets}
-      renderItem={({item}) => (
+      renderItem={({ item }) => (
         <CategoryCard
           item={item}
           activeItem={activeItem}
@@ -35,6 +31,10 @@ const OrderCategoriesList: FC<OrderCategoriesListProps> = () => {
       showsHorizontalScrollIndicator={false}
     />
   );
+};
+
+const renderSeparator = () => {
+  return <View style={styles.separator} />;
 };
 
 export default OrderCategoriesList;

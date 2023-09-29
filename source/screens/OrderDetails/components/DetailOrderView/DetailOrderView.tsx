@@ -1,17 +1,15 @@
-import React, {FC, useCallback, useState} from 'react';
-import {View, Text, TouchableOpacity} from 'react-native';
+import React, { FC, useCallback, useState } from 'react';
+import { View, Text, TouchableOpacity } from 'react-native';
 
+import Collapsible from 'react-native-collapsible';
 import FastImage from 'react-native-fast-image';
 
-import {DetailOrderViewProps} from './types';
-import {hitSlop} from '../../../../styles';
-import {styles} from './DetailOrderView.styles';
-import Collapsible from 'react-native-collapsible';
+import { IMAGES } from '../../../../utils/constants';
+import { DetailOrderViewProps } from './types';
+import { hitSlop } from '../../../../styles';
+import { styles } from './DetailOrderView.styles';
 
-const arrowIcon = require('../../../../../assets/top_arrow.png');
-const bottomArrow = require('../../../../../assets/bottom_arrow.png');
-
-const DetailOrderView: FC<DetailOrderViewProps> = ({title, children}) => {
+const DetailOrderView: FC<DetailOrderViewProps> = ({ title, children }) => {
   const [collapsed, setCollapsed] = useState<boolean>(false);
 
   const toggleCollapsedTapped = useCallback(() => {
@@ -25,7 +23,7 @@ const DetailOrderView: FC<DetailOrderViewProps> = ({title, children}) => {
         <TouchableOpacity hitSlop={hitSlop} onPress={toggleCollapsedTapped}>
           <FastImage
             style={styles.arrowIcon}
-            source={collapsed ? bottomArrow : arrowIcon}
+            source={collapsed ? IMAGES.bottomArrowIcon : IMAGES.arrowIcon}
             resizeMode={'cover'}
           />
         </TouchableOpacity>

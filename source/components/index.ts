@@ -5,4 +5,11 @@ import StatusView from './StatusView/StatusView';
 import RouteView from './RouteView/RouteView';
 import CustomerView from './CustomerView/CustomerView';
 
-export {Button, StatusView, DetailView, OrderDateView, RouteView, CustomerView};
+export {
+  Button,
+  StatusView,
+  DetailView,
+  OrderDateView,
+  RouteView,
+  CustomerView,
+};

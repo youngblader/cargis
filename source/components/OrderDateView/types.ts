@@ -1,4 +1,4 @@
-import {Source} from 'react-native-fast-image';
+import { Source } from 'react-native-fast-image';
 
 export interface OrderDateViewProps {
   date: OrderDate;

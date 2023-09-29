@@ -1,24 +1,28 @@
-import React, {FC} from 'react';
-import {View} from 'react-native';
-import {SafeAreaView} from 'react-native-safe-area-context';
+import React, { FC } from 'react';
+import { View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 import OrdersList from './components/OrdersList/OrdersList';
-import {HeaderOrdersList} from './components';
+import { HeaderOrdersList } from './components';
 
-import {Order} from '../../types/Order';
-import {styles} from './Orders.styles';
-import {OrdersProps} from './types';
+import { useTypedNavigation } from '../../hooks/useTypedNavigation/useTypedNavigation';
 
-const OrdersView: FC<OrdersProps> = ({navigation}) => {
-  const presentDetailOrder = (item: Order) => {
-    navigation.navigate('DetailOrder', {id: item.id});
+import { Order } from '../../types/Order';
+import { OrdersProps } from './types';
+import { styles } from './Orders.styles';
+
+const OrdersView: FC<OrdersProps> = () => {
+  const navigation = useTypedNavigation();
+
+  const presentOrderDetails = (item: Order) => {
+    navigation.navigate('OrderDetails', { id: item.id });
   };
 
   return (
     <SafeAreaView style={styles.safe}>
       <View style={styles.container}>
         <HeaderOrdersList />
-        <OrdersList onCardTapped={presentDetailOrder} />
+        <OrdersList onCardTapped={presentOrderDetails} />
       </View>
     </SafeAreaView>
   );

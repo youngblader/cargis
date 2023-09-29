@@ -1,3 +1,9 @@
-import {OrdersNavigationProps} from '../../navigation/types';
+import { ParamListBase, RouteProp } from '@react-navigation/native';
 
-export interface OrdersProps extends OrdersNavigationProps {}
+export interface OrdersProps {}
+
+export interface OrdersParams extends ParamListBase {
+  Orders: {};
+}
+
+export type OrdersRoute = RouteProp<OrdersParams, 'Orders'>;

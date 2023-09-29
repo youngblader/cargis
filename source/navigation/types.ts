@@ -1,4 +1,5 @@
-import {StackNavigationProp} from '@react-navigation/stack';
+import { ParamListBase, RouteProp } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
 
 export type RootStackNavigation = {
   Main: undefined;
@@ -6,13 +7,7 @@ export type RootStackNavigation = {
 
 export type MainStackNavigation = {
   Orders: undefined;
-  DetailOrder: undefined;
+  OrderDetails: { id: number };
 };
 
-export interface OrdersNavigationProps {
-  navigation: StackNavigationProp<MainStackNavigation, 'Orders'>;
-}
-
-export interface DetailOrderNavigationProps {
-  navigation: StackNavigationProp<MainStackNavigation, 'DetailOrder'>;
-}
+export interface Screens extends MainStackNavigation {}

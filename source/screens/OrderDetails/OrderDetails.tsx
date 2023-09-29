@@ -1,7 +1,7 @@
-import React, {FC} from 'react';
-import {View, Text, TouchableOpacity, ScrollView} from 'react-native';
+import React, { FC } from 'react';
+import { View, Text, TouchableOpacity, ScrollView } from 'react-native';
 
-import {SafeAreaView} from 'react-native-safe-area-context';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import FastImage from 'react-native-fast-image';
 
 import {
@@ -11,6 +11,7 @@ import {
   RouteView,
   StatusView,
 } from '../../components';
+
 import {
   DropDownButton,
   CargoContactsView,
@@ -18,20 +19,25 @@ import {
   FooterView,
 } from './components';
 
-import {useDetailOrder} from '../../hooks/useDetailOrder/useDetailOrder';
-import {CargoContact} from './components/CargoContactsView/types';
-import {DetailOrderProps} from './types';
-import {OrderDate} from '../../components/OrderDateView/types';
-import {Route} from '../../components/RouteView/types';
+import { useTypedNavigation } from '../../hooks/useTypedNavigation/useTypedNavigation';
+import { useRoute } from '@react-navigation/native';
+import { useDetailOrder } from '../../hooks/useDetailOrder/useDetailOrder';
 
-import {hitSlop} from '../../styles';
-import {styles} from './DetailOrder.styles';
+import { CargoContact } from './components/CargoContactsView/types';
+import { OrderDate } from '../../components/OrderDateView/types';
+import { Route } from '../../components/RouteView/types';
+import { OrderDetailsProps, OrderDetailsRoute } from './types';
 
-const leftArrow = require('../../../assets/left_arrow.png');
+import { IMAGES } from '../../utils/constants';
 
-const DetailOrder: FC<DetailOrderProps> = ({route, navigation}) => {
-  const {id} = route?.params;
-  const {order, isLoading, isError} = useDetailOrder(id);
+import { hitSlop } from '../../styles';
+import { styles } from './OrderDetails.styles';
+
+const OrderDetails: FC<OrderDetailsProps> = () => {
+  const navigation = useTypedNavigation();
+  const { params } = useRoute<OrderDetailsRoute>();
+
+  const { order } = useDetailOrder(params?.id);
 
   const shipper: CargoContact = {
     companyName: order?.shipper_company_shortname,
@@ -66,7 +72,7 @@ const DetailOrder: FC<DetailOrderProps> = ({route, navigation}) => {
     views: order?.views_count,
   };
 
-  const goBack = () => {
+  const dismiss = () => {
     navigation.goBack();
   };
 
@@ -74,10 +80,10 @@ const DetailOrder: FC<DetailOrderProps> = ({route, navigation}) => {
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.wrapper}>
         <View style={styles.cardHeader}>
-          <TouchableOpacity hitSlop={hitSlop} onPress={goBack}>
+          <TouchableOpacity hitSlop={hitSlop} onPress={dismiss}>
             <FastImage
               style={styles.backIcon}
-              source={leftArrow}
+              source={IMAGES.leftArrowIcon}
               resizeMode={'cover'}
             />
           </TouchableOpacity>
@@ -86,7 +92,7 @@ const DetailOrder: FC<DetailOrderProps> = ({route, navigation}) => {
             <View style={styles.cardHeaderWrapper}>
               <View style={styles.rowCentering}>
                 <Text style={styles.orderTitle}>Заявка №{order?.id}</Text>
-                <StatusView status={order?.status_1c} />
+                <StatusView status={order?.status_1c ?? ''} />
               </View>
             </View>
 
@@ -249,4 +255,4 @@ const DetailOrder: FC<DetailOrderProps> = ({route, navigation}) => {
   );
 };
 
-export default DetailOrder;
+export default OrderDetails;

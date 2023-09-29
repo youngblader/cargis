@@ -1,20 +1,15 @@
-import React, {FC, useState} from 'react';
-import {View, FlatList, ActivityIndicator} from 'react-native';
+import React, { FC, useState } from 'react';
+import { View, FlatList, ActivityIndicator } from 'react-native';
 
-import {useOrders} from '../../../../hooks/useOrders/useOrders';
+import { useOrders } from '../../../../hooks/useOrders/useOrders';
 
 import OrderCard from '../OrderCard/OrderCard';
 
-import {OrdersListProps} from './types';
-import {styles} from './OrdersList.styles';
-import {Order} from '../../../../types/Order';
+import { OrdersListProps } from './types';
+import { styles } from './OrdersList.styles';
 
-const renderSeparator = () => {
-  return <View style={styles.separator} />;
-};
-
-const OrdersList: FC<OrdersListProps> = ({onCardTapped}) => {
-  const {orders, isLoading, totalPage, refreshOrders, loadMoreOrders} =
+const OrdersList: FC<OrdersListProps> = ({ onCardTapped }) => {
+  const { orders, isLoading, totalPage, refreshOrders, loadMoreOrders } =
     useOrders();
 
   const [page, setPage] = useState(0);
@@ -47,23 +42,21 @@ const OrdersList: FC<OrdersListProps> = ({onCardTapped}) => {
     }
   };
 
-  const keyExtractor = (item: Order) => item.id;
-
-  const renderItem = ({item}: {item: Order}) => (
-    <OrderCard order={item} onPress={() => onCardTapped(item)} />
-  );
-
   return (
     <FlatList
       data={orders}
       extraData={orders}
       maxToRenderPerBatch={120}
       windowSize={30}
+      vertical={true}
       initialNumToRender={10}
+      scrollEventThrottle={16}
       style={styles.listWrapper}
       contentContainerStyle={styles.flatlistInsets}
       ItemSeparatorComponent={renderSeparator}
-      renderItem={renderItem}
+      renderItem={({ item }) => (
+        <OrderCard order={item} onPress={() => onCardTapped(item)} />
+      )}
       refreshing={refreshing}
       onRefresh={forceRefresh}
       onEndReachedThreshold={0.5}
@@ -75,12 +68,12 @@ const OrdersList: FC<OrdersListProps> = ({onCardTapped}) => {
           )}
         </>
       }
-      scrollEventThrottle={16}
-      vertical={true}
-      keyExtractor={keyExtractor}
+      keyExtractor={item => item.id}
       showsHorizontalScrollIndicator={false}
     />
   );
 };
+
+const renderSeparator = () => <View style={styles.separator} />;
 
 export default OrdersList;

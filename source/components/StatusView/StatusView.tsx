@@ -1,11 +1,21 @@
-import React, {FC} from 'react';
-import {View, Text} from 'react-native';
+import React, { FC } from 'react';
+import { View, Text } from 'react-native';
 
-import {colors} from '../../styles';
-import {Status, StatusStyle, StatusViewProps} from './types';
-import {styles} from './StatusView.styles';
+import { colors } from '../../styles';
+import { Status, StatusViewProps } from './types';
+import { styles } from './StatusView.styles';
 
-const getStatusStyle = (value: Status): StatusStyle => {
+const StatusView: FC<StatusViewProps> = ({ status }) => {
+  const { textColor, backgroundColor, text } = getStatusStyle(status);
+
+  return (
+    <View style={[styles.container, { backgroundColor: backgroundColor }]}>
+      <Text style={[styles.statusText, { color: textColor }]}>{text}</Text>
+    </View>
+  );
+};
+
+const getStatusStyle = (value: string) => {
   switch (value) {
     case Status.active:
       return {
@@ -25,20 +35,9 @@ const getStatusStyle = (value: Status): StatusStyle => {
         backgroundColor: colors.statusGray,
         text: 'На паузе',
       };
+    default:
+      return {};
   }
-};
-
-const StatusView: FC<StatusViewProps> = ({status}) => {
-  const value: string = status ?? '';
-
-  const {textColor, backgroundColor, text} =
-    getStatusStyle(Status[value]) ?? {};
-
-  return (
-    <View style={[styles.container, {backgroundColor: backgroundColor}]}>
-      <Text style={[styles.statusText, {color: textColor}]}>{text}</Text>
-    </View>
-  );
 };
 
 export default StatusView;

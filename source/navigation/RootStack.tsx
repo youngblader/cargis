@@ -1,8 +1,8 @@
 import React from 'react';
-import {createStackNavigator} from '@react-navigation/stack';
+import { createStackNavigator } from '@react-navigation/stack';
 
 import MainStack from './MainStack';
-import {RootStackNavigation} from './types';
+import { RootStackNavigation } from './types';
 
 const RootStackNavigator = createStackNavigator<RootStackNavigation>();
 

@@ -1,9 +1,9 @@
-import React, {FC} from 'react';
-import {View} from 'react-native';
-import {Button} from '../../../../components';
+import React, { FC } from 'react';
+import { View } from 'react-native';
+import { Button } from '../../../../components';
 
-import {FooterViewProps} from './types';
-import {styles} from './FooterView.styles';
+import { FooterViewProps } from './types';
+import { styles } from './FooterView.styles';
 
 const FooterView: FC<FooterViewProps> = ({}) => {
   return (

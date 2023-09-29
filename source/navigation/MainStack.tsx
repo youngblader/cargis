@@ -1,10 +1,10 @@
 import React from 'react';
-import {createStackNavigator} from '@react-navigation/stack';
+import { createStackNavigator } from '@react-navigation/stack';
 
-import {Orders, DetailOrder} from '../screens';
+import { Orders, OrderDetails } from '../screens';
 
-import {MainStackNavigation} from './types';
-import {colors} from '../styles';
+import { MainStackNavigation } from './types';
+import { colors } from '../styles';
 
 const MainStackNavigator = createStackNavigator<MainStackNavigation>();
 
@@ -25,14 +25,14 @@ const MainStack = () => {
         component={Orders}
       />
       <MainStackNavigator.Screen
-        name="DetailOrder"
+        name="OrderDetails"
         options={{
           headerShown: false,
           cardStyle: {
             backgroundColor: colors.white,
           },
         }}
-        component={DetailOrder}
+        component={OrderDetails}
       />
     </MainStackNavigator.Navigator>
   );

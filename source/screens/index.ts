@@ -1,4 +1,4 @@
 import Orders from './Orders/Orders';
-import DetailOrder from './DetailOrder/DetailOrder';
+import OrderDetails from './OrderDetails/OrderDetails';
 
-export {Orders, DetailOrder};
+export { Orders, OrderDetails };

@@ -1,8 +1,8 @@
 import useSWR from 'swr';
-import {fetchDetailOrder} from '../../services/orders';
+import { fetchDetailOrder } from '../../services/orders';
 
-import {DetailOrder} from '../../types/DetailOrder';
-import {useDetailOrderResponse} from './types';
+import { DetailOrder } from '../../types/DetailOrder';
+import { useDetailOrderResponse } from './types';
 
 const endpoints = {
   order: 'https://admin-ct.cargis.pro/api/client/v1/orders',
@@ -16,7 +16,7 @@ export const useDetailOrder = (id: number): useDetailOrderResponse => {
     return fetchDetailOrder(url);
   };
 
-  const {data, error, isLoading} = useSWR(url, fetcher);
+  const { data, error, isLoading } = useSWR(url, fetcher);
 
   return {
     order: data ?? null,

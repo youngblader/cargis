@@ -1,5 +1,5 @@
 export interface ButtonProps {
-  typeButton: string;
+  typeButton?: string;
   containerStyle?: {};
   buttonText: string;
   textSize?: number;

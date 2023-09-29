@@ -1,12 +1,12 @@
-import React, {FC} from 'react';
-import {Text, TouchableOpacity} from 'react-native';
-import {CategoryCardProps} from './types';
+import React, { FC } from 'react';
+import { Text, TouchableOpacity } from 'react-native';
+import { CategoryCardProps } from './types';
 
-import {colors} from '../../../../styles';
-import {styles} from './CategoryCard.styles';
+import { colors } from '../../../../styles';
+import { styles } from './CategoryCard.styles';
 
-const CategoryCard: FC<CategoryCardProps> = ({item, activeItem, onPress}) => {
-  const {id, name} = item;
+const CategoryCard: FC<CategoryCardProps> = ({ item, activeItem, onPress }) => {
+  const { id, name } = item;
 
   const cardActiveStyle = id === activeItem ? styles.active : styles.default;
   const textColor = id === activeItem ? colors.blue : colors.halfBlack;
@@ -15,7 +15,7 @@ const CategoryCard: FC<CategoryCardProps> = ({item, activeItem, onPress}) => {
     <TouchableOpacity
       style={[styles.container, cardActiveStyle]}
       onPress={onPress}>
-      <Text style={[styles.text, {color: textColor}]}>{name}</Text>
+      <Text style={[styles.text, { color: textColor }]}>{name}</Text>
     </TouchableOpacity>
   );
 };

@@ -1,10 +1,10 @@
-import React, {FC} from 'react';
-import {View, Text} from 'react-native';
+import React, { FC } from 'react';
+import { View, Text } from 'react-native';
 
 import OrderCategoriesList from '../OrderCategoriesList/OrderCategoriesList';
 
-import {HeaderOrdersListProps} from './types';
-import {styles} from './HeaderOrdersList.styles';
+import { HeaderOrdersListProps } from './types';
+import { styles } from './HeaderOrdersList.styles';
 
 const HeaderOrdersList: FC<HeaderOrdersListProps> = ({
   title = 'Заявки на перевозки',

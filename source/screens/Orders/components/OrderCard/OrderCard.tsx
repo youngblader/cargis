@@ -1,9 +1,9 @@
-import React, {FC, useState, memo} from 'react';
-import {View, Text, TouchableOpacity} from 'react-native';
-import FastImage from 'react-native-fast-image';
-import moment from 'moment';
+import React, { FC, useState, memo, useCallback } from 'react';
+import { View, Text, TouchableOpacity } from 'react-native';
 
+import FastImage from 'react-native-fast-image';
 import Collapsible from 'react-native-collapsible';
+import moment from 'moment';
 
 import {
   Button,
@@ -14,21 +14,20 @@ import {
   CustomerView,
 } from '../../../../components';
 
-import {hitSlop} from '../../../../styles';
-import {OrderCardProps, EqualType} from './types';
-import {OrderDate} from '../../../../components/OrderDateView/types';
-import {Route} from '../../../../components/RouteView/types';
+import { IMAGES } from '../../../../utils/constants';
+import { OrderCardProps, EqualType } from './types';
+import { OrderDate } from '../../../../components/OrderDateView/types';
+import { Route } from '../../../../components/RouteView/types';
 
-import {styles} from './OrderCard.styles';
+import { hitSlop } from '../../../../styles';
+import { styles } from './OrderCard.styles';
 
-const arrowIcon = require('../../../../../assets/top_arrow.png');
-
-const OrderCard: FC<OrderCardProps> = ({order, onPress}) => {
+const OrderCard: FC<OrderCardProps> = ({ order, onPress }) => {
   const [collapsed, setCollapsed] = useState<boolean>(false);
 
-  const toggleCollapsedTapped = () => {
+  const toggleCollapsedTapped = useCallback(() => {
     setCollapsed(prev => !prev);
-  };
+  }, []);
 
   const date: OrderDate = {
     created: moment(order.create_dt).format('DD.MM.YY'),
@@ -53,7 +52,7 @@ const OrderCard: FC<OrderCardProps> = ({order, onPress}) => {
           <TouchableOpacity hitSlop={hitSlop} onPress={toggleCollapsedTapped}>
             <FastImage
               style={styles.arrowIcon}
-              source={arrowIcon}
+              source={IMAGES.arrowIcon}
               resizeMode={'cover'}
             />
           </TouchableOpacity>
@@ -139,11 +138,7 @@ const OrderCard: FC<OrderCardProps> = ({order, onPress}) => {
             buttonText={'Подробнее'}
             onPress={onPress}
           />
-          <Button
-            typeButton={'background'}
-            buttonText={'Оставить отклик'}
-            onPress={() => {}}
-          />
+          <Button buttonText={'Оставить отклик'} />
         </View>
       </Collapsible>
     </View>

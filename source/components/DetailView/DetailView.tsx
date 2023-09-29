@@ -1,14 +1,10 @@
-import React, {FC, ReactNode} from 'react';
-import {View, Text} from 'react-native';
+import React, { FC } from 'react';
+import { View, Text } from 'react-native';
 
-import {styles} from './DetailView.styles';
+import { styles } from './DetailView.styles';
+import { DetailViewProps } from './type';
 
-interface DetailViewProps {
-  title: string;
-  children: ReactNode;
-}
-
-const DetailView: FC<DetailViewProps> = ({title, children}) => {
+const DetailView: FC<DetailViewProps> = ({ title, children }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.title} numberOfLines={1}>
