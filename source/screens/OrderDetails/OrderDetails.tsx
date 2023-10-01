@@ -35,8 +35,8 @@ import { styles } from './OrderDetails.styles';
 
 const OrderDetails: FC<OrderDetailsProps> = () => {
   const navigation = useTypedNavigation();
-  const { params } = useRoute<OrderDetailsRoute>();
 
+  const { params } = useRoute<OrderDetailsRoute>();
   const { order } = useDetailOrder(params?.id);
 
   const shipper: CargoContact = {

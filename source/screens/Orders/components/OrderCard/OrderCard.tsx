@@ -14,10 +14,11 @@ import {
   CustomerView,
 } from '../../../../components';
 
-import { IMAGES } from '../../../../utils/constants';
-import { OrderCardProps, EqualType } from './types';
 import { OrderDate } from '../../../../components/OrderDateView/types';
 import { Route } from '../../../../components/RouteView/types';
+import { OrderCardProps, EqualType } from './types';
+
+import { IMAGES } from '../../../../utils/constants';
 
 import { hitSlop } from '../../../../styles';
 import { styles } from './OrderCard.styles';
@@ -47,7 +48,7 @@ const OrderCard: FC<OrderCardProps> = ({ order, onPress }) => {
         <View style={styles.cardHeaderWrapper}>
           <View style={styles.rowCentering}>
             <Text style={styles.orderTitle}>Заявка №{order.id}</Text>
-            <StatusView status={order.status_1c} />
+            <StatusView status={order?.status_1c ?? ''} />
           </View>
           <TouchableOpacity hitSlop={hitSlop} onPress={toggleCollapsedTapped}>
             <FastImage

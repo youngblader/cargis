@@ -1,17 +1,19 @@
 import React, { FC, useState } from 'react';
 import { View, FlatList, ActivityIndicator } from 'react-native';
 
-import { useOrders } from '../../../../hooks/useOrders/useOrders';
-
 import OrderCard from '../OrderCard/OrderCard';
 
 import { OrdersListProps } from './types';
 import { styles } from './OrdersList.styles';
 
-const OrdersList: FC<OrdersListProps> = ({ onCardTapped }) => {
-  const { orders, isLoading, totalPage, refreshOrders, loadMoreOrders } =
-    useOrders();
-
+const OrdersList: FC<OrdersListProps> = ({
+  orders,
+  onCardTapped,
+  refreshOrders,
+  loadMoreOrders,
+  loading,
+  totalPage,
+}) => {
   const [page, setPage] = useState(0);
   const [refreshing, setRefreshing] = useState(false);
 
@@ -28,7 +30,7 @@ const OrdersList: FC<OrdersListProps> = ({ onCardTapped }) => {
   };
 
   const onEndReached = () => {
-    if (!isLoading) {
+    if (!loading) {
       const currentPage = page + 1;
 
       loadMoreOrders(currentPage);
@@ -63,7 +65,7 @@ const OrdersList: FC<OrdersListProps> = ({ onCardTapped }) => {
       onEndReached={scrollViewDidEndDragging}
       ListEmptyComponent={
         <>
-          {isLoading && !refreshing && (
+          {loading && !refreshing && (
             <ActivityIndicator style={styles.loader} />
           )}
         </>
